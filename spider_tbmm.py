@@ -1,29 +1,53 @@
 # -*-coding:utf-8-*-
 import random
+import os
+import time
 from urllib import request, parse
 import json
 import re
 import ssl
-import os
-
-import time
+import requests
 
 
 class spider_tbmm:
     def __init__(self):
         self.url = 'https://mm.taobao.com/tstar/search/tstar_model.do?_input_charset=utf-8'
 
-    # 先打开首页，获取基本信息【分页是post，待实现分页】
-    def get_basicinfo_list(self,startuserid=0):
-        url = self.url
-        req = request.Request(url)  # 构造request
-        response = request.urlopen(req).read().decode('gbk', 'ignore')
-        basic_info = json.loads(response)['data']['searchDOList']
-        print(self.url)
+    # 先打开首页，获取基本信息【分页是post实现的】
+    def get_basicinfo_list(self, startuserid=0):
 
-        # for i in basic_info[startuserid:29]:
-        #     print('姓名：{0},userid：{1}'.format(i['realName'],i['userId']))
-        return basic_info[startuserid:len(basic_info)]
+        for pageindex in range(1, 1400):  # 看淘宝mm有多少页这个值就多少
+            data = {'viewFlag': 'A',
+                    'sortType': 'default',
+                    'searchRegion': 'city:',
+                    'currentPage': pageindex, # 分页
+                    'pageSize': '100'  # 100
+                    }
+            header = {'Host': 'mm.taobao.com',
+                      'Origin': 'https://mm.taobao.com',
+                      'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.',
+                      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                      'Accept': 'application/json, text/javascript, */*; q=0.01',
+                      'X-Requested-With': 'XMLHttpRequest',
+                      'Referer': 'https://mm.taobao.com/search_tstar_model.htm?spm=5679.126488.640745.2.69891757XQaub1',
+                      'Accept-Encoding': 'gzip, deflate, br',
+                      'Accept-Language': 'zh-CN,zh;q=0.8'}
+            url = self.url
+
+            # urllib搞不定了，返回内容一直有解码问题,还是用requests
+            # req = request.Request(url, parse.urlencode(data).encode('UTF-8'), header)  # 构造request
+            # response = request.urlopen(req).read().decode('UTF-8','ignore')
+            # print(response)
+
+            # 直接用requests库就不会有那么多编码问题，还能知道编码
+            response = requests.post(url, data=data, headers=header, verify=False)
+            # print(response.encoding)
+            # print(response.text)
+
+            basic_info = json.loads(response.text)['data']['searchDOList']
+            for i in basic_info[startuserid:len(basic_info)]:
+                print('姓名：{0},userid：{1}'.format(i['realName'],i['userId']))
+            # return basic_info[startuserid:len(basic_info)]
 
     # 获取每个用户所有相册id
     def get_album_list(self, userid):
@@ -88,7 +112,7 @@ class spider_tbmm:
         return realurl
 
     # 启动爬虫
-    def spider_start(self,startuserid=0):
+    def spider_start(self, startuserid=0):
         print('爬虫已启动')
         cla = spider_tbmm()
         for i in cla.get_basicinfo_list(startuserid):
@@ -121,7 +145,7 @@ class spider_tbmm:
                                 continue
                     except BaseException as e:
                         print('当前{}的相册获取失败，相册id为{}. 错误原因{}'.format(i['realName'], j, e))
-                        time.sleep(random.randint(3,6)) # 爬完一个相册之后等待3-6秒再爬，防止反爬虫
+                        time.sleep(random.randint(3, 6))  # 爬完一个相册之后等待3-6秒再爬，防止反爬虫
                         print('正在线程等待几秒钟')
                         continue
             except BaseException as e:
@@ -162,8 +186,9 @@ class spider_tbmm:
             f.write(data)
 
 
+# spider_tbmm().get_basicinfo_list(0) # 单独运行可以获取所有模特基本信息（用的分页）
 # spider_tbmm().get_album_list(176817195)
-# spider_tbmm().get_album_detail_list(176817195,10000962815)
+# spider_tbmm().get_album_erverpicid_list(176817195,10000962815)
 # spider_tbmm().get_alum_bigpic_url(176817195, 10003453420)
-# spider_tbmm().get_basicinfo_list()
-spider_tbmm().spider_start(5)
+
+# spider_tbmm().spider_start(0) # 启动爬虫
