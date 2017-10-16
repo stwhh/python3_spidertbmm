@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0489bd6f-2ca1-4654-8ee7-9416e29506d2" name="Default" comment="">
+    <list default="true" id="0489bd6f-2ca1-4654-8ee7-9416e29506d2" name="Default" comment="首页抓取支持分页，抓取延时等待，防止反爬虫">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spider_tbmm.py" afterPath="$PROJECT_DIR$/spider_tbmm.py" />
     </list>
@@ -23,8 +23,8 @@
       <file leaf-file-name="spider_tbmm.py" pinned="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spider_tbmm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="194" column="0" lean-forward="false" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
+            <state relative-caret-position="179">
+              <caret line="49" column="12" lean-forward="false" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
               <folding>
                 <element signature="e#21#34#0" expanded="true" />
               </folding>
@@ -127,6 +127,11 @@
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="python3_spidertbmm" type="cbb8eebc:String" user="python3_spidertbmm" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="python3_spidertbmm" type="cbb8eebc:String" user="python3_spidertbmm" />
+              <item name=".idea" type="cbb8eebc:String" user=".idea" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
@@ -270,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507988151754</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="首页抓取支持分页，抓取延时等待，防止反爬虫">
+      <created>1508158583330</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1508158583330</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -356,7 +368,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="【Python3抓到淘宝网淘女郎个人信息和所有照片】项目初始化。" />
     <MESSAGE value="添加异常处理，一张图片抓取失败，继续下一个。一个相册抓取失败继续。" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加异常处理，一张图片抓取失败，继续下一个。一个相册抓取失败继续。" />
+    <MESSAGE value="首页抓取支持分页，抓取延时等待，防止反爬虫" />
+    <option name="LAST_COMMIT_MESSAGE" value="首页抓取支持分页，抓取延时等待，防止反爬虫" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -485,8 +498,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spider_tbmm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="194" column="0" lean-forward="false" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
+        <state relative-caret-position="179">
+          <caret line="49" column="12" lean-forward="false" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="12" />
           <folding>
             <element signature="e#21#34#0" expanded="true" />
           </folding>

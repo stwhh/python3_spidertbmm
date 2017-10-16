@@ -20,7 +20,7 @@ class spider_tbmm:
             data = {'viewFlag': 'A',
                     'sortType': 'default',
                     'searchRegion': 'city:',
-                    'currentPage': pageindex, # 分页
+                    'currentPage': pageindex,  # 分页
                     'pageSize': '100'  # 100
                     }
             header = {'Host': 'mm.taobao.com',
@@ -46,7 +46,7 @@ class spider_tbmm:
 
             basic_info = json.loads(response.text)['data']['searchDOList']
             for i in basic_info[startuserid:len(basic_info)]:
-                print('姓名：{0},userid：{1}'.format(i['realName'],i['userId']))
+                print('姓名：{0},userid：{1}'.format(i['realName'], i['userId']))
             # return basic_info[startuserid:len(basic_info)]
 
     # 获取每个用户所有相册id
@@ -184,7 +184,6 @@ class spider_tbmm:
         data = p.read()
         with open(filepath, 'wb') as f:
             f.write(data)
-
 
 # spider_tbmm().get_basicinfo_list(0) # 单独运行可以获取所有模特基本信息（用的分页）
 # spider_tbmm().get_album_list(176817195)
