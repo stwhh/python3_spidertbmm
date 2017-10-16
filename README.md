@@ -14,4 +14,10 @@ https://mm.taobao.com/album/json/get_album_photo_list.htm?user_id=176817195&albu
 post参数根据chrome查看的请求头构造。
 5. 图片的真实地址找到了，直接保存就好了
 
-运行效果图如下：![image](https://github.com/stwhh/python3_spidertbmm/blob/master/imgs/462f2efb-71b8-4925-b498-70a4ae76d750.png)
+#### 运行效果图如下：
+![image](https://github.com/stwhh/python3_spidertbmm/blob/master/imgs/462f2efb-71b8-4925-b498-70a4ae76d750.png)
+
+#### 爬到的部分目录：
+![image](https://github.com/stwhh/python3_spidertbmm/blob/master/imgs/spide_basicinfo.jpg)
+#### 爬到的部分图片：
+![image](https://github.com/stwhh/python3_spidertbmm/blob/master/imgs/spide_detailinfo.jpg)
