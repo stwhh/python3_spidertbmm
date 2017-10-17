@@ -103,5 +103,5 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-#¹ıÂË.ideaÎÄ¼ş
+#pycharm .idea files
 *.idea/
